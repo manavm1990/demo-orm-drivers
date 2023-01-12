@@ -3,7 +3,7 @@ import sequelize from "../conn.js";
 import Driver from "../driver/model.js";
 
 const Car = sequelize.define(
-  "Car",
+  "car",
   {
     make: {
       type: DataTypes.STRING,
@@ -26,7 +26,6 @@ const Car = sequelize.define(
     },
   },
   {
-    modelName: "Car",
     sequelize,
     timestamps: false,
     underscored: true,

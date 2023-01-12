@@ -3,7 +3,7 @@ import sequelize from "../conn.js";
 import Driver from "../driver/model.js";
 
 const License = sequelize.define(
-  "License",
+  "license",
   {
     licenseNumber: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 },
     isDonor: { type: DataTypes.BOOLEAN, defaultValue: true },
@@ -15,7 +15,7 @@ const License = sequelize.define(
       },
     },
   },
-  { sequelize, modelName: "License", timestamps: false, underscored: true }
+  { sequelize, timestamps: false, underscored: true }
 );
 
 export default License;

@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../conn.js";
 
 const Driver = sequelize.define(
-  "Driver",
+  "driver",
   {
     name: {
       type: DataTypes.STRING,
@@ -13,7 +13,7 @@ const Driver = sequelize.define(
       allowNull: false,
     },
   },
-  { sequelize, modelName: "Driver", timestamps: false, underscored: true }
+  { sequelize, timestamps: false, underscored: true }
 );
 
 export default Driver;
