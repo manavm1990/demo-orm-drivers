@@ -41,7 +41,7 @@ export default async function init() {
 
   console.info("Checking if database needs to be seeded...");
 
-  // Call 'seed' only if there are no drivers in the database
+  // TODO: Call 'seed' only if there are no drivers in the database
 
   console.info("Database is ready.");
 }
