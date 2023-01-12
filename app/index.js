@@ -1,4 +1,4 @@
-import initDB from "./db-setup.js";
+import initDB from "./db/index.js";
 import initServer from "./server.js";
 
 initDB();
