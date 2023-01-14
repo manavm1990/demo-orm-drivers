@@ -1,1 +1,5 @@
-// TODO: Import and init 'db/index.js' and 'server.js'
+import initDB from "./db/index.js";
+import initServer from "./server.js";
+
+initDB();
+initServer();

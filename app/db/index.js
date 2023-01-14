@@ -28,8 +28,19 @@ async function seed() {
 }
 
 export default async function init() {
-  // TODO: 'hasOne', 'hasMany', 'belongsTo'
-  // https://sequelize.org/master/manual/associations.html
+  Driver.hasOne(License, {
+    // Delete child 🧒🏾 records when parent is deleted
+    onDelete: "CASCADE",
+  });
+  License.belongsTo(Driver);
+
+  Driver.hasMany(Car);
+
+  /**
+   * "The defaults for the One-To-One associations is SET NULL for ON DELETE"
+   * https://sequelize.org/docs/v6/core-concepts/assocs/#options
+   */
+  Car.belongsTo(Driver);
 
   // https://sequelize.org/docs/v6/core-concepts/model-basics/#synchronizing-all-models-at-once
   await sequelize.sync().catch((err) => {
@@ -40,8 +51,13 @@ export default async function init() {
   console.info("All models were synchronized successfully.");
 
   console.info("Checking if database needs to be seeded...");
-
-  // TODO: Call 'seed' only if there are no drivers in the database
+  // Does database need to be seeded?
+  const drivers = await Driver.findAll();
+  if (!drivers.length) {
+    console.info("Database needs to be seeded.");
+    await seed();
+    console.info("Database has been seeded.");
+  }
 
   console.info("Database is ready.");
 }
